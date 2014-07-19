@@ -1,0 +1,2 @@
+cat create_table.sql > all.sql;cat `ls *.sql | sed "s/create_table.sql//g"` >> all.sql
+
