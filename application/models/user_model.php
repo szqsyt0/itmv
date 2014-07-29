@@ -1,55 +1,203 @@
 <?php
 /**
  * 用户模型，所有与用户相关的操作全部包含。
+ * 最后修改时间：2014-07-29
  * 函数：
- * login()		登录，		返回false或array("id","iden")
- * register()		注册，		返回错误信息或true
- * change_password()	修改密码，	返回true/false值
- * get_info()		获取全部信息
- * change_userinfo()	修改信息，	返回错误信息或true
- * delete()		删除用户，	返回true/false值
- * 
+ * login(array)			登录，		返回array(id,name,email,identity,lastlogin,status)
+ * register(array)		注册，		返回错误信息或true
+ * change_password(array)	修改密码，	返回true/false值
+ * get_info(array)		获取全部信息
+ * change_userinfo(array)	修改信息，	返回错误信息或true
+ * delete(array)		删除用户，	返回true/false值
+ *
  */
 class User_model extends CI_Model {
-	var $id = '';
-	var $name = '';
-	var $pass = '';
-	var $email = '';
-	var $identity = '';
-	var $lastlogin = '';
-	var $status = '';
-	var $showname = '';
-	var $sex = '';
-	var $phone = '';
 
 	function __construct() {
 		parent::__construct();
 	}
 
-	function login() {
-		// 使用imput类接收name,password
-		$this->name = $this->input->post('name');
-		$this->pass = $this->input->post('pass');
-
-		// 执行存储过程
-		$sql = "call login('$this->name','$this->pass',@id, @iden, @err)";
-		// 手动载入数据库类
-		$this->load->database();
-		$query = $this->db->query($sql);
-		$result = $this->db->query("select @id as id, @iden as iden, @err as err");
-		// 手动关闭数据库连接
-		$this->db->close();
-		$rows = $result->row();
-		// 登录失败直接返回false
-		if ($rows->err != 0) {
-			return false;
-		}
-		// 登录成功
-
-		return array (
-			"id" => $rows->id,
-			"iden" => $rows->iden,
-		);
+	// 判断数组里某个项有没有设置
+	/**
+	 * _required method returns false if the $data array does not contain all of the keys
+	 * assigned by the $required array.
+	 *
+	 * @param array $required
+	 * @param array $data
+	 * @return bool
+	 */
+	private function _required($required, $data)
+	{
+		foreach($required as $field)
+			if(!isset($data[$field]) || $data[$field] == '')
+				return false;
+		return true;
 	}
+
+	/**
+	 * _default method combines the options array with a set of defaults giving the values
+	 * in the options array priority.
+	 *
+	 * @param array $defaults
+	 * @param array $options
+	 * @return array
+	 */
+	private function _default($defaults, $options)
+	{
+		return array_merge($defaults, $options);
+	}
+
+	/**
+	 * 使用数组返回出错信息
+	 * @param string $errinfo
+	 * @return array
+	 */
+	private function _error($errinfo)
+	{
+		return array('error' => $errinfo);
+	}
+
+	/**
+	 * 登录方法，可以用用户名或邮箱登录。
+	 * 最后修改时间：2014-07-29
+	 * Option: Values
+	 * --------------------------
+	 * name
+	 * email
+	 * password
+	 * --------------------------
+	 *
+	 * Returns (array of string)
+	 * --------------------------
+	 * id
+	 * name
+	 * email
+	 * identity
+	 * lastlogin
+	 * status
+	 * --------------------------
+	 * @param array $options
+	 * @return array
+	 */
+	function login($options = array()) {
+		// 检查输入数据
+		$login_by = '';
+		if ($this->_required(array('name'),$options))
+			$login_by = 'name';
+		if ($this->_required(array('email'),$options))
+			$login_by = 'email';
+		if ($login_by == '')
+			return $this->_error('Both user_name and user_email are not set.');
+		if (!$this->_required(array('password'),$options))
+			return $this->_error('password is empty.');
+
+		// 执行查询
+		$query = $this->db->get_where('user', array($login_by => $options[$login_by]));
+		$result = $query->row_array(1);
+		// 检测用户存在
+		if (!$result)
+			return $this->_error($login_by . ' ' . $options[$login_by] . ' not found');
+		// 验证密码
+		if ($options['password'] != $result['password'])
+			return $this->_error('Wrong Password.');
+
+		// 检测状态
+		if ($result['status'] == -1)
+			return $this->_error('This user is not allowed to login.');
+
+		// 登录成功，修改最后登录时间
+		date_default_timezone_set('Asia/Shanghai');
+		$data = array('lastlogin' => date('Y-m-d'));
+		$this->db->where('id', $result['id']);
+		$this->db->update('user',$data);
+
+		// 处理登录结果
+		//unset($result[$login_by]);
+		unset($result['password']);
+		switch ($result['identity']) {
+			case '0': $result['identity'] = 'sadmin';break;
+			case '1': $result['identity'] = 'user';break;
+			case '2': $result['identity'] = 'admin';break;
+			default: $result['identity'] = 'user';
+		}
+		switch ($result['status']) {
+			case '0': $result['status'] = 'normal';break;
+			case '1': $result['status'] = 'nocomment';break;
+			default: $result['status'] = 'normal';
+		}
+		return $result;
+	}
+
+	/**
+	 * GetUsers method returns an array of qualified user record objects
+	 *
+	 * Option: Values
+	 * --------------
+	 * userId
+	 * userEmail
+	 * userStatus
+	 * limit      limits the number of returned records
+	 * offset     how many records to bypass before returning a record (limit required)
+	 * sortBy         determines which column the sort takes place
+	 * sortDirection  (asc, desc) sort ascending or descending (sortBy required)
+	 *
+	 * Returns (array of objects)
+	 * --------------------------
+	 * userId
+	 * userEmail
+	 * userName
+	 * userStatus
+	 *
+	 * @param array $options
+	 * @return array result()
+	 */
+	function GetUsers($options = array())
+	{
+		// default values
+		$options = $this->_default(array('sortDirection' => 'asc'), $options);
+
+		// Add where clauses to query
+		$qualificationArray = array('userId', 'userEmail', 'userStatus');
+		foreach($qualificationArray as $qualifier)
+		{
+			if(isset($options[$qualifier]))
+			$this->db->where($qualifier, $options[$qualifier]);
+		}
+
+		// If limit / offset are declared (usually for pagination)
+		// then we need to take them into account
+		if(isset($options['limit']) && isset($options['offset']))
+		$this->db->limit($options['limit'], $options['offset']);
+		else if(isset($options['limit'])) $this->db->limit($options['limit']);
+
+		// sort
+		if(isset($options['sortBy']))
+		$this->db->order_by($options['sortBy'], $options['sortDirection']);
+
+		$query = $this->db->get('users');
+		if($query->num_rows() == 0) return false;
+
+		if(isset($options['userId']) && isset($options['userEmail']))
+		{
+			// If we know that we're returning a singular record,
+		// then let's just return the object
+			return $query->row(0);
+		}
+		else
+		{
+			// If we could be returning any number of records
+		// then we'll need to do so as an array of objects
+			return $query->result();
+		}
+	}
+	/**
+	 * Usage:
+	 * $user_id = $this->user_model->AddUser($_POST);
+	 * if($user_id)
+	 * 	echo "The user you have created has been added successfully with ID #" . $user_id;
+	 * else
+	 * 	echo "There was an error adding your user.";
+	 */
+
 }
 ?>
