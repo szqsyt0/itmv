@@ -13,7 +13,7 @@ create table `user` (
 	`name` varchar(32) not null unique comment '唯一的，可用于登录的用户名',
 	`password` varchar(128) not null comment '密码，使用sha512散列存储',
 	`email` varchar(64) not null unique comment '邮箱，必须有的',
-	`identity` tinyint not null default 1 comment '身份，0用户1管理员2超级管理员',
+	`identity` tinyint not null default 0 comment '身份，0用户1管理员2超级管理员',
 	`lastlogin` date not null comment '最后登录的日期',
 	`status` tinyint default 0 not null comment '用户状态，0为正常，1为被禁止评论。-1禁止登录'
 ) comment '用户主表，每次登录都必要的信息存在这里。';
