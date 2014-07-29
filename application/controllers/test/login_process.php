@@ -6,11 +6,10 @@ class Login_process extends CI_Controller {
 
 	public function index() {
 		$this->output->enable_profiler(TRUE);
-		echo $this->input->post('name').'</br>';
 		$this->load->model('User_model');
-		$shit = $this->User_model->login();
+		$shit = $this->User_model->login($_POST);
 		if ($shit)
-			echo $shit["id"].'</br>'.$shit["iden"];
+			echo var_dump($shit);
 		else echo "FALSE";
 	}
 }

@@ -1,9 +1,9 @@
 # 创建专用用户
-create user 'itmvuser'@'localhost' identified by 'texk$u123';
+create user 'itmvuser'@'%' identified by 'texk$u123';
 # 创建数据库itmv
 create database itmv character set utf8;
 # 给用户对该数据库的所有权力
-grant all privilege on itmv.* to itmvuser@localhost;
+grant all privileges on itmv.* to itmvuser;
 
 # 创建表开始
 use itmv;
@@ -21,7 +21,7 @@ create table `user` (
 -- 用户额外信息
 create table `user_extra` (
 	`user_id` int unsigned not null primary key comment '依赖user表中的id',
-	constraint `user_extra_id_must_exist` foreign key (`user_id`) references `user` (`user_id`),
+	constraint `user_extra_id_must_exist` foreign key (`user_id`) references `user` (`id`),
 	`nickname` varchar(64) comment '昵称(显示名)，可以为空',
 	`sex` tinyint unsigned not null default 0 comment '性别，0保密1男2女',
 	`mobile` char(11) unique comment '手机号，可以为空，可用来找回密码'
