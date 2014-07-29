@@ -4,9 +4,9 @@
  * 最后修改时间：2014-07-29
  * 函数：
  * login(array)			登录，		返回array(id,name,email,identity,lastlogin,status)
- * register(array)		注册，		返回错误信息或true
+ * get_info(array)		获取全部信息	返回array()
+ * register(array)		注册，		返回array(id,name,email,identity,lastlogin,status)
  * change_password(array)	修改密码，	返回true/false值
- * get_info(array)		获取全部信息
  * change_userinfo(array)	修改信息，	返回错误信息或true
  * delete(array)		删除用户，	返回true/false值
  *
@@ -17,10 +17,9 @@ class User_model extends CI_Model {
 		parent::__construct();
 	}
 
-	// 判断数组里某个项有没有设置
 	/**
-	 * _required method returns false if the $data array does not contain all of the keys
-	 * assigned by the $required array.
+	 * 判断$data里是否设置了$required里的项，和是否非空，
+	 * 若没设置或为空则返回false
 	 *
 	 * @param array $required
 	 * @param array $data
@@ -49,6 +48,7 @@ class User_model extends CI_Model {
 
 	/**
 	 * 使用数组返回出错信息
+	 *
 	 * @param string $errinfo
 	 * @return array
 	 */
@@ -60,22 +60,23 @@ class User_model extends CI_Model {
 	/**
 	 * 登录方法，可以用用户名或邮箱登录。
 	 * 最后修改时间：2014-07-29
+	 *
 	 * Option: Values
 	 * --------------------------
-	 * name
-	 * email
-	 * password
-	 * --------------------------
+	 * name		user name
+	 * email	user email
+	 * password	sha512加密后的128位密码
 	 *
 	 * Returns (array of string)
 	 * --------------------------
-	 * id
-	 * name
-	 * email
-	 * identity
-	 * lastlogin
-	 * status
-	 * --------------------------
+	 * id		user id
+	 * name		user name
+	 * email	user email
+	 * identity	('user','admin','sadmin')之一
+	 * lastlogin	lastlogin date string
+	 * status	('normal','nocomment','nologin')之一
+	 * error	若出错了则返回error
+	 *
 	 * @param array $options
 	 * @return array
 	 */
@@ -115,9 +116,9 @@ class User_model extends CI_Model {
 		//unset($result[$login_by]);
 		unset($result['password']);
 		switch ($result['identity']) {
-			case '0': $result['identity'] = 'sadmin';break;
-			case '1': $result['identity'] = 'user';break;
-			case '2': $result['identity'] = 'admin';break;
+			case '0': $result['identity'] = 'user';break;
+			case '1': $result['identity'] = 'admin';break;
+			case '2': $result['identity'] = 'sadmin';break;
 			default: $result['identity'] = 'user';
 		}
 		switch ($result['status']) {
@@ -133,9 +134,9 @@ class User_model extends CI_Model {
 	 *
 	 * Option: Values
 	 * --------------
-	 * userId
-	 * userEmail
-	 * userStatus
+	 * id
+	 * email
+	 * status
 	 * limit      limits the number of returned records
 	 * offset     how many records to bypass before returning a record (limit required)
 	 * sortBy         determines which column the sort takes place
@@ -143,10 +144,12 @@ class User_model extends CI_Model {
 	 *
 	 * Returns (array of objects)
 	 * --------------------------
-	 * userId
-	 * userEmail
-	 * userName
-	 * userStatus
+	 * id
+	 * email
+	 * name
+	 * status
+	 * identity
+	 * lastlogin
 	 *
 	 * @param array $options
 	 * @return array result()
@@ -157,7 +160,7 @@ class User_model extends CI_Model {
 		$options = $this->_default(array('sortDirection' => 'asc'), $options);
 
 		// Add where clauses to query
-		$qualificationArray = array('userId', 'userEmail', 'userStatus');
+		$qualificationArray = array('id', 'email', 'status');
 		foreach($qualificationArray as $qualifier)
 		{
 			if(isset($options[$qualifier]))
@@ -174,10 +177,10 @@ class User_model extends CI_Model {
 		if(isset($options['sortBy']))
 		$this->db->order_by($options['sortBy'], $options['sortDirection']);
 
-		$query = $this->db->get('users');
+		$query = $this->db->get('user');
 		if($query->num_rows() == 0) return false;
 
-		if(isset($options['userId']) && isset($options['userEmail']))
+		if(isset($options['id']) && isset($options['email']))
 		{
 			// If we know that we're returning a singular record,
 		// then let's just return the object
