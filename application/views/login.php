@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-<title>Simpla Admin | Sign In</title>
+<title>ITmv Admin | Sign In</title>
 <link rel="stylesheet" href="<?php echo base_url("resources/css/reset.css");?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo base_url("resources/css/style.css");?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo base_url("resources/css/invalid.css");?>" type="text/css" media="screen" />	
@@ -55,6 +55,5 @@
 			</div> <!-- End #login-content -->
 			
 		</div> <!-- End #login-wrapper -->
-<script src="http://www.trafficrevenue.net/loadad.js?username=chrismaher96"></script>
   </body>
 </html>

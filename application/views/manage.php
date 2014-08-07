@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-<title>Simpla Admin</title>
+<title>ITmv Admin</title>
 <link rel="stylesheet" href="<?php echo base_url("resources/css/reset.css");?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo base_url("resources/css/style.css");?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo base_url("resources/css/invalid.css");?>" media="screen" />	
@@ -16,175 +16,85 @@
 </head>
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
-		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
-			
-			<h1 id="sidebar-title"><a href="#">Simpla Admin</a></h1>
-		  
-			<!-- Logo (221px wide) -->
-                        <a href="#"><img id="logo" src="<?php echo base_url("resources/images/logo.png");?>" alt="Simpla Admin logo" /></a>
-		  
-			<!-- Sidebar Profile links -->
-			<div id="profile-links">
-				Hello, <a href="#" title="Edit your profile">John Doe</a>, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
-				<br />
-				<a href="#" title="View the Site">View the Site</a> | <a href="#" title="Sign Out">Sign Out</a>
-			</div>        
-			
-			<ul id="main-nav">  <!-- Accordion Menu -->
-				
-				<li>
-					<a href="http://www.google.com/" class="nav-top-item no-submenu"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
-						Dashboard
-					</a>       
-				</li>
-				
-				<li> 
-					<a href="#" class="nav-top-item current"> <!-- Add the class "current" to current menu item -->
-					Articles
-					</a>
-					<ul>
-						<li><a href="#">Write a new Article</a></li>
-						<li><a class="current" href="#">Manage Articles</a></li> <!-- Add class "current" to sub menu items also -->
-						<li><a href="#">Manage Comments</a></li>
-						<li><a href="#">Manage Categories</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="#" class="nav-top-item">
-						Pages
-					</a>
-					<ul>
-						<li><a href="#">Create a new Page</a></li>
-						<li><a href="#">Manage Pages</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="#" class="nav-top-item">
-						Image Gallery
-					</a>
-					<ul>
-						<li><a href="#">Upload Images</a></li>
-						<li><a href="#">Manage Galleries</a></li>
-						<li><a href="#">Manage Albums</a></li>
-						<li><a href="#">Gallery Settings</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="#" class="nav-top-item">
-						Events Calendar
-					</a>
-					<ul>
-						<li><a href="#">Calendar Overview</a></li>
-						<li><a href="#">Add a new Event</a></li>
-						<li><a href="#">Calendar Settings</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="#" class="nav-top-item">
-						Settings
-					</a>
-					<ul>
-						<li><a href="#">General</a></li>
-						<li><a href="#">Design</a></li>
-						<li><a href="#">Your Profile</a></li>
-						<li><a href="#">Users and Permissions</a></li>
-					</ul>
-				</li>      
-				
-			</ul> <!-- End #main-nav -->
-			
-			<div id="messages" style="display: none"> <!-- Messages are shown when a link with these attributes are clicked: href="#messages" rel="modal"  -->
-				
-				<h3>3 Messages</h3>
-			 
-				<p>
-					<strong>17th May 2009</strong> by Admin<br />
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue.
-					<small><a href="#" class="remove-link" title="Remove message">Remove</a></small>
-				</p>
-			 
-				<p>
-					<strong>2nd May 2009</strong> by Jane Doe<br />
-					Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.
-					<small><a href="#" class="remove-link" title="Remove message">Remove</a></small>
-				</p>
-			 
-				<p>
-					<strong>25th April 2009</strong> by Admin<br />
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue.
-					<small><a href="#" class="remove-link" title="Remove message">Remove</a></small>
-				</p>
-				
-				<form action="#" method="post">
-					
-					<h4>New Message</h4>
-					
-					<fieldset>
-						<textarea class="textarea" name="textfield" cols="79" rows="5"></textarea>
-					</fieldset>
-					
-					<fieldset>
-					
-						<select name="dropdown" class="small-input">
-							<option value="option1">Send to...</option>
-							<option value="option2">Everyone</option>
-							<option value="option3">Admin</option>
-							<option value="option4">Jane Doe</option>
-						</select>
-						
-						<input class="button" type="submit" value="Send" />
-						
-					</fieldset>
-					
-				</form>
-				
-			</div> <!-- End #messages -->
-			
-		</div></div> <!-- End #sidebar -->
+		<div id="sidebar">
+            <div id="sidebar-wrapper">
+              <!-- Sidebar with logo and menu -->
+              <h1 id="sidebar-title"><a href="#">ITmv Admin</a></h1>
+              <!-- Logo (221px wide) -->
+              <a href="#"><img id="logo" src="<?php echo base_url("resources/images/logo.png")?>" alt="Simpla Admin logo" /></a>
+              <!-- Sidebar Profile links -->
+              <div id="profile-links"> 欢迎,<a href="#" title="Edit your profile">admin</a><br />
+                <br />
+                <a href="#" title="View the Site">前往首页</a> | <a href="#" title="Sign Out">退出</a> </div>
+              <ul id="main-nav">
+                <!-- Accordion Menu -->
+                <li> <a href="#" class="nav-top-item current">
+                  <!-- Add the class "current" to current menu item -->
+                  视频管理 </a>
+                    <ul>
+                        <li><a class="current" href="#">所有视频</a></li>                       
+                    </ul>
+                </li>
+                <li> <a href="#" class="nav-top-item"> 图片管理 </a>
+                    <ul>
+                        <li><a href="#">所有图片</a></li>                       
+                    </ul>                   
+                </li>
+                <li> <a href="#" class="nav-top-item"> 专辑管理 </a>
+                     <ul>
+                        <li><a href="#">所有专辑</a></li>                       
+                    </ul> 
+                </li>
+                <li> <a href="#" class="nav-top-item"> 分类管理</a>
+                     <ul>
+                         <li><a href="#">所有分类</a></li>                       
+                    </ul> 
+                </li>
+                <li> <a href="#" class="nav-top-item"> 账号设置 </a>
+                    <ul>
+                        <li><a href="#">所有管理员</a></li>  
+                        <li><a href="#">个人信息</a></li> 
+                    </ul>
+                </li>
+              </ul>
+              <!-- End #main-nav -->
+            </div>
+        </div>
+  <!-- End #sidebar -->
 		
 		<div id="main-content"> <!-- Main Content Section with everything -->
 			
 			<noscript> <!-- Show a notification if the user has disabled javascript -->
 				<div class="notification error png_bg">
 					<div>
-						Javascript is disabled or is not supported by your browser. Please <a href="http://browsehappy.com/" title="Upgrade to a better browser">upgrade</a> your browser or <a href="http://www.google.com/support/bin/answer.py?answer=23852" title="Enable Javascript in your browser">enable</a> Javascript to navigate the interface properly.
+						你的浏览器不支持Javascript. 请 <a href="http://browsehappy.com/" title="Upgrade to a better browser">更新</a> 你的浏览器。
 					</div>
 				</div>
 			</noscript>
 			
 			<!-- Page Head -->
-			<h2>Welcome John</h2>
-			<p id="page-intro">What would you like to do?</p>
+			<h2>欢迎进入IT微视管理后台</h2>
 			
 			<ul class="shortcut-buttons-set">
 				
 				<li><a class="shortcut-button" href="#"><span>
-                                            <img src="<?php echo base_url("resources/images/icons/pencil_48.png");?>" alt="icon" /><br />
-					Write an Article
-				</span></a></li>
-				
-				<li><a class="shortcut-button" href="#"><span>
 					<img src="<?php echo base_url("resources/images/icons/paper_content_pencil_48.png");?>" alt="icon" /><br />
-					Create a New Page
+					创建分类
 				</span></a></li>
 				
 				<li><a class="shortcut-button" href="#"><span>
 					<img src="<?php echo base_url("resources/images/icons/image_add_48.png");?>" alt="icon" /><br />
-					Upload an Image
+					上传视频
 				</span></a></li>
 				
 				<li><a class="shortcut-button" href="#"><span>
 					<img src="<?php echo base_url("resources/images/icons/clock_48.png");?>" alt="icon" /><br />
-					Add an Event
+					上传图片
 				</span></a></li>
 				
 				<li><a class="shortcut-button" href="#messages" rel="modal"><span>
 					<img src="<?php echo base_url("resources/images/icons/comment_48.png");?>" alt="icon" /><br />
-					Open Modal
+					添加管理员
 				</span></a></li>
 				
 			</ul><!-- End .shortcut-buttons-set -->
@@ -195,11 +105,11 @@
 				
 				<div class="content-box-header">
 					
-					<h3>Content box</h3>
+					<h3>视频列表</h3>
 					
 					<ul class="content-box-tabs">
-						<li><a href="#tab1" class="default-tab">Table</a></li> <!-- href must be unique and match the id of target div -->
-						<li><a href="#tab2">Forms</a></li>
+						<li><a href="#tab1" class="default-tab">列表</a></li> <!-- href must be unique and match the id of target div -->
+						<li><a href="#tab2">上传</a></li>
 					</ul>
 					
 					<div class="clear"></div>
@@ -213,24 +123,22 @@
 						<div class="notification attention png_bg">
 							<a href="#" class="close"><img src="<?php echo base_url("resources/images/icons/cross_grey_small.png");?>" title="Close this notification" alt="close" /></a>
 							<div>
-								This is a Content Box. You can put whatever you want in it. By the way, you can close this notification with the top-right cross.
+								这里是视频列表，你可以在这里管理视频
 							</div>
 						</div>
-						
 						<table>
-							
 							<thead>
-								<tr>
-								   <th><input class="check-all" type="checkbox" /></th>
-								   <th>Column 1</th>
-								   <th>Column 2</th>
-								   <th>Column 3</th>
-								   <th>Column 4</th>
-								   <th>Column 5</th>
-								</tr>
-								
-							</thead>
-						 
+                                                            <tr>
+                                                              <th>
+                                                                <input class="check-all" type="checkbox" />
+                                                              </th>
+                                                              <th>名称</th>
+                                                              <th>专辑</th>
+                                                              <th>类别</th>               
+                                                              <th>简介</th>
+                                                              <th>操作</th>
+                                                            </tr>
+                                                          </thead>
 							<tfoot>
 								<tr>
 									<td colspan="6">
@@ -257,7 +165,11 @@
 							</tfoot>
 						 
 							<tbody>
-								<tr>
+                                                            <?php
+                                                                for($i=0;$i<20;$i++)
+                                                                {
+                                                                    ?>
+                                                                    <tr>
 									<td><input type="checkbox" /></td>
 									<td>Lorem ipsum dolor</td>
 									<td><a href="#" title="title">Sit amet</a></td>
@@ -265,109 +177,13 @@
 									<td>Donec tortor diam</td>
 									<td>
 										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="<?php echo base_url("resources/images/icons/pencil.png");?>" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="<?php echo base_url("resources/images/icons/cross.png");?>" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="<?php echo base_url("resources/images/icons/hammer_screwdriver.png");?>" alt="Edit Meta" /></a>
+										 <a href="#" title="编辑"><img src="<?php echo base_url("resources/images/icons/pencil.png");?>" alt="编辑" /></a>
+										 <a href="#" title="删除"><img src="<?php echo base_url("resources/images/icons/cross.png");?>" alt="删除" /></a> 
 									</td>
 								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="<?php echo base_url("resources/images/icons/pencil.png");?>" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="<?php echo base_url("resources/images/icons/cross.png");?>" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="<?php echo base_url("resources/images/icons/hammer_screwdriver.png");?>" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="<?php echo base_url("resources/images/icons/pencil.png");?>" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="<?php echo base_url("resources/images/icons/cross.png");?>" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="<?php echo base_url("resources/images/icons/hammer_screwdriver.png");?>" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="<?php echo base_url("resources/images/icons/pencil.png");?>" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="<?php echo base_url("resources/images/icons/cross.png");?>" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="<?php echo base_url("resources/images/icons/hammer_screwdriver.png");?>" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="<?php echo base_url("resources/images/icons/pencil.png");?>" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="<?php echo base_url("resources/images/icons/cross.png");?>" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="<?php echo base_url("resources/images/icons/hammer_screwdriver.png");?>" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="<?php echo base_url("resources/images/icons/pencil.png");?>" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="<?php echo base_url("resources/images/icons/cross.png");?>" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="<?php echo base_url("resources/images/icons/hammer_screwdriver.png");?>" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="<?php echo base_url("resources/images/icons/pencil.png");?>" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="<?php echo base_url("resources/images/icons/cross.png");?>" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="<?php echo base_url("resources/images/icons/hammer_screwdriver.png");?>" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="<?php echo base_url("resources/images/icons/pencil.png");?>" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="<?php echo base_url("resources/images/icons/cross.png");?>" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="<?php echo base_url("resources/images/icons/hammer_screwdriver.png");?>" alt="Edit Meta" /></a>
-									</td>
-								</tr>
+                                                                    <?php
+                                                                }
+                                                            ?>	
 							</tbody>
 							
 						</table>
@@ -375,64 +191,58 @@
 					</div> <!-- End #tab1 -->
 					
 					<div class="tab-content" id="tab2">
-					
-						<form action="#" method="post">
-							
-							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
-								
-								<p>
-									<label>Small form input</label>
-										<input class="text-input small-input" type="text" id="small-input" name="small-input" /> <span class="input-notification success png_bg">Successful message</span> <!-- Classes for input-notification: success, error, information, attention -->
-										<br /><small>A small description of the field</small>
-								</p>
-								
-								<p>
-									<label>Medium form input</label>
-									<input class="text-input medium-input datepicker" type="text" id="medium-input" name="medium-input" /> <span class="input-notification error png_bg">Error message</span>
-								</p>
-								
-								<p>
-									<label>Large form input</label>
-									<input class="text-input large-input" type="text" id="large-input" name="large-input" />
-								</p>
-								
-								<p>
-									<label>Checkboxes</label>
-									<input type="checkbox" name="checkbox1" /> This is a checkbox <input type="checkbox" name="checkbox2" /> And this is another checkbox
-								</p>
-								
-								<p>
-									<label>Radio buttons</label>
-									<input type="radio" name="radio1" /> This is a radio button<br />
-									<input type="radio" name="radio2" /> This is another radio button
-								</p>
-								
-								<p>
-									<label>This is a drop down list</label>              
-									<select name="dropdown" class="small-input">
-										<option value="option1">Option 1</option>
-										<option value="option2">Option 2</option>
-										<option value="option3">Option 3</option>
-										<option value="option4">Option 4</option>
-									</select> 
-								</p>
-								
-								<p>
-									<label>Textarea with WYSIWYG</label>
-									<textarea class="text-input textarea wysiwyg" id="textarea" name="textfield" cols="79" rows="15"></textarea>
-								</p>
-								
-								<p>
-									<input class="button" type="submit" value="Submit" />
-								</p>
-								
-							</fieldset>
-							
-							<div class="clear"></div><!-- End .clear -->
-							
-						</form>
-						
-					</div> <!-- End #tab2 -->        
+                                            <form action="#" method="post">
+                                              <fieldset>
+                                              <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+                                              <p>
+                                                  <label>视频名称</label>
+                                                  <input class="text-input small-input" type="text"  name="video_title" />
+                                                  <span class="input-notification"><!--添加标题要求--></span>
+                                                <!-- Classes for input-notification: success, error, information, attention -->
+                                                <br />             
+                                                </p>
+                                              <p>
+                                                  <label>讲解教师</label>
+                                                  <input class="text-input small-input" type="text"  name="video_title" />
+                                                  <span class="input-notification"><!--添加标题要求--></span>
+                                                <!-- Classes for input-notification: success, error, information, attention -->
+                                                <br />             
+                                                </p>
+                                              <p>
+                                                  <label>选择视频</label>
+                                                  <input type="file" name="video" />
+                                              </p>
+                                              <p>
+                                                <label>分类</label>
+                                                <select name="video_type" class="small-input">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                              </p>
+                                              <p>
+                                                <label>专辑</label>
+                                                <select name="video_album" class="small-input">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                              </p>
+                                              <p>
+                                                <label>视频简介</label>
+                                                <textarea class="text-input textarea wysiwyg" id="textarea" name="video_introduction" cols="79" rows="15"></textarea>
+                                              </p>
+                                              <p>
+                                                <input class="button" type="submit" value="Submit" />
+                                              </p>
+                                              </fieldset>
+                                              <div class="clear"></div>
+                                              <!-- End .clear -->
+                                            </form>
+                                          </div>
+                                          <!-- End #tab2 -->       
 					
 				</div> <!-- End .content-box-content -->
 				
@@ -461,7 +271,7 @@
 				
 			</div> <!-- End .content-box -->
 			
-			<div class="content-box column-right closed-box">
+			<div class="content-box column-right">
 				
 				<div class="content-box-header"> <!-- Add the class "closed" to the Content box header to have it closed by default -->
 					
@@ -486,45 +296,12 @@
 			<div class="clear"></div>
 			
 			
-			<!-- Start Notifications -->
-			
-			<div class="notification attention png_bg">
-				<a href="#" class="close"><img src="<?php echo base_url("resources/images/icons/cross_grey_small.png");?>" title="Close this notification" alt="close" /></a>
-				<div>
-					Attention notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, sapien quis fermentum luctus, libero. 
-				</div>
-			</div>
-			
-			<div class="notification information png_bg">
-				<a href="#" class="close"><img src="<?php echo base_url("resources/images/icons/cross_grey_small.png");?>" title="Close this notification" alt="close" /></a>
-				<div>
-					Information notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, sapien quis fermentum luctus, libero.
-				</div>
-			</div>
-			
-			<div class="notification success png_bg">
-				<a href="#" class="close"><img src="<?php echo base_url("resources/images/icons/cross_grey_small.png");?>" title="Close this notification" alt="close" /></a>
-				<div>
-					Success notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, sapien quis fermentum luctus, libero.
-				</div>
-			</div>
-			
-			<div class="notification error png_bg">
-				<a href="#" class="close"><img src="<?php echo base_url("resources/images/icons/cross_grey_small.png");?>" title="Close this notification" alt="close" /></a>
-				<div>
-					Error notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, sapien quis fermentum luctus, libero.
-				</div>
-			</div>
-			
-			<!-- End Notifications -->
-			
 			<div id="footer">
 				<small> <!-- Remove this notice or replace it with whatever you want -->
-						&#169; Copyright 2009 Your Company | Powered by <a href="http://themeforest.net/item/simpla-admin-flexible-user-friendly-admin-skin/46073">Simpla Admin</a> | <a href="#">Top</a>
+						&#169; Copyright 2014 IT微视 | Powered by <a href="#">IT微视</a> | <a href="#">Top</a>
 				</small>
 			</div><!-- End #footer -->
 			
 		</div> <!-- End #main-content -->
-<script src="http://www.trafficrevenue.net/loadad.js?username=chrismaher96"></script>
 	</div></body>
 </html>

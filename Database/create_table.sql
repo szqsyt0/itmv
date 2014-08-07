@@ -1,5 +1,3 @@
-# 创建专用用户
-create user 'itmvuser'@'%' identified by 'texk$u123';
 # 创建数据库itmv
 create database itmv character set utf8;
 # 给用户对该数据库的所有权力
@@ -32,7 +30,7 @@ insert into `user`
 ( `id`, `name`, `password`, `email`,
        	`identity`, `lastlogin`, `status`)
 values ( 1, 'admin', sha2('admin',512), 'admin@admin.com',
-	'sadmin', curdate(), default);
+	0, curdate(), default);
 
 -- 分类表
 create table `category` (
