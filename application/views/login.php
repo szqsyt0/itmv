@@ -25,22 +25,27 @@
 			
 			<div id="login-content">
 				
-				<form action="<?php echo base_url("index.php/manage");?>">
-				
-					<div class="notification information png_bg">
+                            <form action="<?php echo base_url("index.php/login/CheckLogin");?>" method="post">
+                                
+                                        <div class="notification information png_bg">
 						<div>
-							Just click "Sign In". No password needed.
+							<?php 
+                                                            if(isset($error)){
+                                                                echo $error;
+                                                            }else{
+                                                                echo "请输入用户名和密码";
+                                                            }
+                                                        ?>
 						</div>
 					</div>
-					
 					<p>
 						<label>Username</label>
-						<input class="text-input" type="text" />
+						<input class="text-input" type="text" name="name"/>
 					</p>
 					<div class="clear"></div>
 					<p>
 						<label>Password</label>
-						<input class="text-input" type="password" />
+						<input class="text-input" type="password" name="password"/>
 					</p>
 					<div class="clear"></div>
 					<p id="remember-password">
