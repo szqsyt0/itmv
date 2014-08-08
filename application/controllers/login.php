@@ -24,8 +24,16 @@ class Login extends CI_Controller {
             
             if(array_key_exists('error',$result))
             {
+                //登陆失败，跳转回登陆界面，提示错误信息
                 $this->load->view('login',$result);
-                exit;
             }
+            else
+            {
+                //登陆成功,将用户信息添加到session
+                $this->session->set_userdata($result);
+                //跳转到管理界面
+                $this->load->view('manage',$result);
+            }
+            
         }
 }
